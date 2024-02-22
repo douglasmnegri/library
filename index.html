@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
     <title>Library Project</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <section class="book-container">
+          <ul>
+            <div>
+              <li>
+                <label for="book-title">Book Title</label>
+              </li>
+              <input type="text" name="book-title" id="book-title" />
+            </div>
+            <div>
+              <li>
+                <label for="book-pages">Number of Pages</label>
+              </li>
+              <input type="number" name="book-pages" id="book-pages" />
+            </div>
+            <div>
+              <li>
+                <label for="status-read">Read</label>
+                <input type="radio" name="status" id="status-read" />
+              </li>
+              <li>
+                <label for="status-notRead">Not Read</label>
+                <input type="radio" name="status" id="status-notRead" />
+              </li>
+              <li>
+                <label for="status-partialRead">Partially Read</label>
+                <input type="radio" name="status" id="status-partialRead">
+              </li>
+            </div>
+            <div>
+              <li>
+                <div><button type="submit" id="btn">Submit</button></div>
+              </li>
+            </div>
+          </ul>
+        </section>
+      </form>
+      <div class="shelf">
+        <h1>Your library of box</h1>
+        <ul>
+          <li class="book1">Book 1</li>
+          <li class="book2">Book 2</li>
+          <li class="book3">Book 3</li>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
