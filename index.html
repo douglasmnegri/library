@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js"></script>
     <title>Library Project</title>
   </head>
   <body>
@@ -30,12 +29,8 @@
                 <input type="radio" name="status" id="status-read" />
               </li>
               <li>
-                <label for="status-notRead">Not Read</label>
-                <input type="radio" name="status" id="status-notRead" />
-              </li>
-              <li>
-                <label for="status-partialRead">Partially Read</label>
-                <input type="radio" name="status" id="status-partialRead">
+                <label for="status-not-read">Not Read</label>
+                <input type="radio" name="status" id="status-not-read" />
               </li>
             </div>
             <div>
@@ -48,12 +43,9 @@
       </form>
       <div class="shelf">
         <h1>Your library of box</h1>
-        <ul>
-          <li class="book1">Book 1</li>
-          <li class="book2">Book 2</li>
-          <li class="book3">Book 3</li>
-        </ul>
+        <ul class="list-of-books"></ul>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

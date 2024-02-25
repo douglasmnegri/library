@@ -59,3 +59,13 @@ form > section {
 ul {
   list-style: none;
 }
+
+.list-of-books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2em;
+}
+
+.list-of-books li {
+  border: solid black;
+}
