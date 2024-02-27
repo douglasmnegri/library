@@ -19,10 +19,53 @@
             </div>
             <div>
               <li>
+                <label for="book-author">Author</label>
+              </li>
+              <input type="text" name="book-author" id="book-author" />
+            </div>
+            <div>
+              <li>
                 <label for="book-pages">Number of Pages</label>
               </li>
               <input type="number" name="book-pages" id="book-pages" />
             </div>
+            <div>
+              <li>
+                <label for="book-genre">Genre</label>
+              </li>
+              <input class="book-genre" list="genre-options" id="book-genre">
+              <datalist id="genre-options">
+                <option value="Romance">Romance</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Young Adult">Young Adult</option>
+                <option value="Literary Fiction">Literary Fiction</option>
+                <option value="Biography">Biography</option>
+                <option value="Self-help">Self-help</option>
+                <option value="Paranormal">Paranormal</option>
+                <option value="Religion">Religion</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Horror">Horror</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Memoir">Memoir</option>
+                <option value="True Crime">True Crime</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Historical Fiction">Historical Fiction</option>
+                <option value="Graphic Novel">Graphic Novel</option>
+                <option value="Dystopian">Dystopian</option>
+                <option value="Business">Business</option>
+                <option value="Classics">Classics</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Crime">Crime</option>
+                <option value="Suspense">Suspense</option>
+                <option value="Historical Romance">Historical Romance</option>
+                <option value="Contemporary Romance">Contemporary Romance</option>
+                <option value="Science Fantasy">Science Fantasy</option>
+                <option value="Urban Fantasy">Urban Fantasy</option>
+                <option value="Psychological Thriller">Psychological Thriller</option>
+                <option value="Cozy Mystery">Cozy Mystery</option>
+                <option value="Action and Adventure">Action and Adventure</option>
+              </datalist>
+            </div>      
             <div>
               <li>
                 <label for="status-read">Read</label>
@@ -41,9 +84,12 @@
           </ul>
         </section>
       </form>
+
       <div class="shelf">
         <h1>Your library of box</h1>
-        <ul class="list-of-books"></ul>
+        <ul class="list-of-books">
+          
+        </ul>
       </div>
     </div>
     <script src="script.js"></script>

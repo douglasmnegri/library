@@ -27,12 +27,11 @@ input{
 }
 
 .container div:nth-child(4) {
-  display: flex;
-  justify-content: start;
-  padding-top: 1em;
+  display: block;
 }
 
-button {
+
+form button {
   flex: 1;
   border-radius: 5px;
   font-size: 1.2em;
@@ -46,9 +45,6 @@ button {
   border-radius: 10px;
   grid-column: 1 / 4;
   grid-row: 3 / 4;
-}
-.shelf > ul {
-  margin: 2em;
 }
 
 form > section {
@@ -67,5 +63,6 @@ ul {
 }
 
 .list-of-books li {
+  display: flex;
   border: solid black;
 }
