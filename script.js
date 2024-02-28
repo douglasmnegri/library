@@ -1,4 +1,40 @@
-const myLibrary = [];
+const myLibrary = [
+  {
+    title: "Lord of the Rings",
+    author: "J. R. R. Tolkien",
+    pages: 432,
+    genre: "Adventure",
+    read: true,
+  },
+  {
+    title: "Harry Potter",
+    author: "J.K. Rowling",
+    pages: 320,
+    genre: "Fantasy",
+    read: true,
+  },
+  {
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    pages: 281,
+    genre: "Fiction",
+    read: true,
+  },
+  {
+    title: "1984",
+    author: "George Orwell",
+    pages: 328,
+    genre: "Dystopian",
+    read: false,
+  },
+  {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    pages: 180,
+    genre: "Fiction",
+    read: true,
+  },
+];
 // { title: "Nineteen Eigthy-four", pages: 335, read: false }
 
 function Book(title, author, pages, genre, read) {
@@ -15,31 +51,35 @@ Book.prototype.listOfBooks = listOfBooks;
 let title = document.getElementById("book-title");
 let author = document.getElementById("book-author");
 let pages = document.getElementById("book-pages");
-let genre = document.getElementById("book-genre")
+let genre = document.getElementById("book-genre");
 let read = document.getElementById("status-read");
 
 function listOfBooks() {
   const button = document.getElementById("btn");
   button.addEventListener("click", (e) => {
     e.preventDefault();
-    const bookToAdd = new Book(title.value, author.value, pages.value, genre.value, read.checked);
+    const bookToAdd = new Book(
+      title.value,
+      author.value,
+      pages.value,
+      genre.value,
+      read.checked
+    );
     bookToAdd.addBookToLibrary();
     printBook();
     clearFieldContent();
   });
 }
 
-listOfBooks()
+listOfBooks();
 
 function addBookToLibrary() {
   myLibrary.push(this);
 }
 
-
-function printBook(index) {
+function printBook() {
   const bookContainer = document.querySelector(".list-of-books");
-  index = myLibrary.length - 1;
-  for (let i = index; i < myLibrary.length; i++) {
+  for (let i = 0; i < myLibrary.length; i++) {
     const bookExample = document.createElement("li");
     const title = document.createElement("div");
     const author = document.createElement("div");
@@ -51,24 +91,31 @@ function printBook(index) {
     const remove = document.createElement("button");
 
     title.textContent = `Title: ${myLibrary[i].title}`;
-    author.textContent = `Author: ${myLibrary[i].author}`
+    author.textContent = `Author: ${myLibrary[i].author}`;
     pages.textContent = `Pages: ${myLibrary[i].pages}`;
-    genre.textContent = `Genre: ${myLibrary[i].genre}`
+    genre.textContent = `Genre: ${myLibrary[i].genre}`;
     remove.textContent = "Remove";
-    myLibrary[i].read === true ? read.textContent = "Read" : read.textContent = "Not read";
+    myLibrary[i].read === true
+      ? (read.textContent = "Read")
+      : (read.textContent = "Not read");
 
-
-    read.addEventListener('click', () => {
-      read.textContent === "Read" ? read.textContent = "Not read" : read.textContent = "Read";
+    read.addEventListener("click", () => {
+      if (read.textContent === "Read") {
+        read.textContent = "Not read";
+        read.style.backgroundColor = "#e76b2d";
+      } else {
+        read.textContent = "Read";
+        read.style.backgroundColor = "#333d30";
+      }
     });
 
-    remove.addEventListener('click', () => {
+    remove.addEventListener("click", () => {
       bookExample.remove();
     });
-    
+
     bookExample.appendChild(title);
     title.appendChild(author);
-    author.appendChild(pages)
+    author.appendChild(pages);
     pages.appendChild(genre);
     genre.appendChild(readBox);
     readBox.appendChild(read);
@@ -83,6 +130,8 @@ function clearFieldContent() {
   title.value = "";
   author.value = "";
   pages.value = "";
+  genre.value = "";
   read.checked = false;
 }
 
+printBook();
