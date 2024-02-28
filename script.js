@@ -5,6 +5,7 @@ const myLibrary = [
     pages: 432,
     genre: "Adventure",
     read: true,
+    printId: false,
   },
   {
     title: "Harry Potter",
@@ -12,6 +13,7 @@ const myLibrary = [
     pages: 320,
     genre: "Fantasy",
     read: true,
+    printId: false,
   },
   {
     title: "To Kill a Mockingbird",
@@ -19,6 +21,7 @@ const myLibrary = [
     pages: 281,
     genre: "Fiction",
     read: true,
+    printId: false,
   },
   {
     title: "1984",
@@ -26,6 +29,7 @@ const myLibrary = [
     pages: 328,
     genre: "Dystopian",
     read: false,
+    printId: false,
   },
   {
     title: "The Great Gatsby",
@@ -33,16 +37,18 @@ const myLibrary = [
     pages: 180,
     genre: "Fiction",
     read: true,
+    printId: false,
   },
 ];
 // { title: "Nineteen Eigthy-four", pages: 335, read: false }
 
-function Book(title, author, pages, genre, read) {
+function Book(title, author, pages, genre, read, printId) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.genre = genre;
   this.read = read;
+  this.printId = printId;
 }
 
 Book.prototype.addBookToLibrary = addBookToLibrary;
@@ -66,8 +72,8 @@ function listOfBooks() {
       read.checked
     );
     bookToAdd.addBookToLibrary();
-    printBook();
     clearFieldContent();
+    printBooks(myLibrary);
   });
 }
 
@@ -77,52 +83,84 @@ function addBookToLibrary() {
   myLibrary.push(this);
 }
 
-function printBook() {
+const searchInput = document.getElementById("search-item");
+searchInput.addEventListener("input", () => {
+  const searchTerm = searchInput.value.trim().toUpperCase(); // Trim whitespace and convert to uppercase
+  const searchMatch = myLibrary.filter((element) => {
+    return (
+      element.title.toUpperCase().includes(searchTerm) ||
+      element.author.toUpperCase().includes(searchTerm)
+    );
+  });
+  clearBookContainer();
+  printBooks(searchMatch);
+});
+
+function clearBookContainer() {
   const bookContainer = document.querySelector(".list-of-books");
-  for (let i = 0; i < myLibrary.length; i++) {
-    const bookExample = document.createElement("li");
-    const title = document.createElement("div");
-    const author = document.createElement("div");
-    const pages = document.createElement("div");
-    const genre = document.createElement("div");
-    const readBox = document.createElement("div");
-    const removeBox = document.createElement("div");
-    const read = document.createElement("button");
-    const remove = document.createElement("button");
+  bookContainer.innerHTML = "";
+}
 
-    title.textContent = `Title: ${myLibrary[i].title}`;
-    author.textContent = `Author: ${myLibrary[i].author}`;
-    pages.textContent = `Pages: ${myLibrary[i].pages}`;
-    genre.textContent = `Genre: ${myLibrary[i].genre}`;
-    remove.textContent = "Remove";
-    myLibrary[i].read === true
-      ? (read.textContent = "Read")
-      : (read.textContent = "Not read");
+function printBooks(books) {
+  const bookContainer = document.querySelector(".list-of-books");
+  for (let i = 0; i < books.length; i++) {
+    const book = books[i];
+    // Check if the book already exists in the DOM
+    if (!document.getElementById(book.title)) {
+      const bookExample = document.createElement("li");
+      bookExample.id = book.title; // Set the ID of the book element
 
-    read.addEventListener("click", () => {
-      if (read.textContent === "Read") {
-        read.textContent = "Not read";
-        read.style.backgroundColor = "#e76b2d";
-      } else {
-        read.textContent = "Read";
-        read.style.backgroundColor = "#333d30";
-      }
-    });
+      const title = document.createElement("div");
+      const author = document.createElement("div");
+      const pages = document.createElement("div");
+      const genre = document.createElement("div");
+      const readBox = document.createElement("div");
+      const removeBox = document.createElement("div");
+      const read = document.createElement("button");
+      const remove = document.createElement("button");
 
-    remove.addEventListener("click", () => {
-      bookExample.remove();
-    });
+      title.textContent = `Title: ${book.title}`;
+      author.textContent = `Author: ${book.author}`;
+      pages.textContent = `Pages: ${book.pages}`;
+      genre.textContent = `Genre: ${book.genre}`;
+      remove.textContent = "Remove";
+      book.read === true
+        ? (read.textContent = "Read")
+        : ((read.textContent = "Not read"),
+          (read.style.backgroundColor = "#e76b2d"));
 
-    bookExample.appendChild(title);
-    title.appendChild(author);
-    author.appendChild(pages);
-    pages.appendChild(genre);
-    genre.appendChild(readBox);
-    readBox.appendChild(read);
-    removeBox.appendChild(remove);
-    readBox.appendChild(removeBox);
+      read.addEventListener("click", () => {
+        if (read.textContent === "Read") {
+          read.textContent = "Not read";
+          read.style.backgroundColor = "#e76b2d";
+        } else {
+          read.textContent = "Read";
+          read.style.backgroundColor = "#333d30";
+        }
+      });
 
-    bookContainer.appendChild(bookExample);
+      remove.addEventListener("click", () => {
+        // Remove the book from the library array
+        const indexToRemove = myLibrary.findIndex(
+          (item) => item.title === book.title
+        );
+        if (indexToRemove !== -1) {
+          myLibrary.splice(indexToRemove, 1);
+        }
+        // Remove the book element from the DOM
+        bookExample.remove();
+      });
+
+      bookExample.appendChild(title);
+      title.appendChild(author);
+      author.appendChild(pages);
+      pages.appendChild(genre);
+      genre.appendChild(readBox);
+      readBox.appendChild(read);
+      removeBox.appendChild(remove);
+      readBox.appendChild(removeBox);
+      bookContainer.appendChild(bookExample);
+    }
   }
 }
 
@@ -133,5 +171,8 @@ function clearFieldContent() {
   genre.value = "";
   read.checked = false;
 }
-
-printBook();
+// Function to print all books initially
+function printAllBooks() {
+  printBooks(myLibrary);
+}
+printAllBooks();

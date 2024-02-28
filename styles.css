@@ -5,10 +5,10 @@
 
 :root {
   --main-bg-color: #333d30;
-  --green-one-color: #385B35;
+  --green-one-color: #385b35;
   --secondary-bg-color: #dcbb61;
   --yellow-one-color: #dfbe65;
-  --main-font-color: #F5F5F5;
+  --main-font-color: #f5f5f5;
   --button-unread: #e76b2d;
   --main-font: "Montserrat", sans-serif;
 }
@@ -27,6 +27,7 @@
   grid-row: 1 / 2;
   font-size: 2em;
   display: flex;
+  gap: 0.25em;
   justify-content: center;
   align-items: center;
   background-color: var(--green-one-color);
@@ -41,6 +42,12 @@
   color: var(--main-font-color);
 }
 
+img {
+  height: auto;
+  width: 8em;
+  margin: 0.2em;
+}
+
 .sidebar {
   grid-column: 1 / 2;
   grid-row: 2 / 5;
@@ -49,7 +56,7 @@
   background-color: var(--green-one-color);
 }
 
- form {
+form {
   grid-row: 1 / 3;
   display: flex;
   align-items: start;
@@ -78,7 +85,7 @@ form button {
   padding: 0.5em;
   color: white;
   border-radius: 5px;
-  background-color: var(--main-bg-color)
+  background-color: var(--main-bg-color);
 }
 
 .shelf {
@@ -103,16 +110,14 @@ ul {
   margin: 1em;
 }
 
-
-.list-of-books li  {
+.list-of-books li {
   font-size: medium;
   padding: 1.5em;
   border: solid var(--main-bg-color);
   background-color: var(--yellow-one-color);
-  color:var(--main-bg-color);
+  color: var(--main-bg-color);
   border-radius: 10px;
 }
-
 
 .list-of-books button {
   border-radius: 5px;
@@ -129,16 +134,10 @@ ul {
 }
 
 button:hover {
-  
-  --s: 0.1em;   /* the thickness of the line */
-  --c: #1095c1; /* the color */
-  
-  background-color: #0000;
-  padding-bottom: var(--s);
-  background: 
-    linear-gradient(90deg,var(--c) 0%,#000 0) calc(100% - var(--_p,0%))/200% 100%,
-    linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) var(--s) no-repeat;
-  -webkit-background-clip: text,padding-box;
-          background-clip: text,padding-box;
-  transition: 0.5s;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  transition: box-shadow 0.3s; /* Transition effect for smoother shadow change */
+  box-shadow: 0 4px 4px rgb(227, 212, 212) /* Adding a shadow on hover for a 3D effect */
 }

@@ -4,18 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
 
     <title>Library Project</title>
   </head>
   <body>
     <div class="container">
       <div class="header">
-        <h1>Your Library</h1>
+        <i class="fas fa-search"></i>
+        <input type="text" name="search-item" id="search-item" placeholder="Search Book">
       </div>
 
       <div class="logo">
-        <h2>Book Placeholder</h2>
+        <img src="./images/Livro4.svg" alt="white book logo" />
       </div>
       <div class="sidebar">
         <form>
@@ -25,13 +33,23 @@
                 <li>
                   <label for="book-title">Book Title</label>
                 </li>
-                <input type="text" name="book-title" id="book-title" maxlength="45" />
+                <input
+                  type="text"
+                  name="book-title"
+                  id="book-title"
+                  maxlength="45"
+                />
               </div>
               <div>
                 <li>
                   <label for="book-author">Author</label>
                 </li>
-                <input type="text" name="book-author" id="book-author" maxlength="45"/>
+                <input
+                  type="text"
+                  name="book-author"
+                  id="book-author"
+                  maxlength="45"
+                />
               </div>
               <div>
                 <li>
@@ -43,7 +61,11 @@
                 <li>
                   <label for="book-genre">Genre</label>
                 </li>
-                <input class="book-genre" list="genre-options" id="book-genre">
+                <input
+                  class="book-genre"
+                  list="genre-options"
+                  id="book-genre"
+                />
                 <datalist id="genre-options">
                   <option value="Romance">Romance</option>
                   <option value="Fantasy">Fantasy</option>
@@ -68,22 +90,24 @@
                   <option value="Crime">Crime</option>
                   <option value="Suspense">Suspense</option>
                   <option value="Historical Romance">Historical Romance</option>
-                  <option value="Contemporary Romance">Contemporary Romance</option>
+                  <option value="Contemporary Romance">
+                    Contemporary Romance
+                  </option>
                   <option value="Science Fantasy">Science Fantasy</option>
                   <option value="Urban Fantasy">Urban Fantasy</option>
-                  <option value="Psychological Thriller">Psychological Thriller</option>
+                  <option value="Psychological Thriller">
+                    Psychological Thriller
+                  </option>
                   <option value="Cozy Mystery">Cozy Mystery</option>
-                  <option value="Action and Adventure">Action and Adventure</option>
+                  <option value="Action and Adventure">
+                    Action and Adventure
+                  </option>
                 </datalist>
               </div>
               <div>
                 <li>
                   <label for="status-read">Read</label>
-                  <input type="radio" name="status" id="status-read" />
-                </li>
-                <li>
-                  <label for="status-not-read">Not Read</label>
-                  <input type="radio" name="status" id="status-not-read" />
+                  <input type="checkbox" name="status" id="status-read" />
                 </li>
               </div>
               <div>
@@ -97,8 +121,7 @@
       </div>
 
       <div class="shelf">
-        <ul class="list-of-books">
-        </ul>
+        <ul class="list-of-books"></ul>
       </div>
     </div>
     <script src="script.js"></script>
