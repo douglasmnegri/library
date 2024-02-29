@@ -64,6 +64,7 @@ function listOfBooks() {
   const button = document.getElementById("btn");
   button.addEventListener("click", (e) => {
     e.preventDefault();
+
     const bookToAdd = new Book(
       title.value,
       author.value,
@@ -163,6 +164,46 @@ function printBooks(books) {
     }
   }
 }
+// Function to print all books initially
+function printAllBooks() {
+  printBooks(myLibrary);
+}
+printAllBooks();
+
+
+// Field control for validation and design
+const btn = document.getElementById("btn");
+const bookT = document.getElementById("book-title");
+const bookA = document.getElementById("book-author");
+const bookP = document.getElementById("book-pages")
+
+function validationState() {
+  function validateInputs() {
+    const titleFilled = bookT.value.trim().length > 0;
+    const authorFilled = bookA.value.trim().length > 0;
+    return titleFilled && authorFilled;
+  }
+
+  function updateButtonState() {
+    btn.disabled = !validateInputs();
+  }
+
+  function numberOnly(event) {
+    // Allow only numbers and backspace/delete keys
+    const keyCode = event.keyCode;
+    if ((keyCode < 48 || keyCode > 57) && keyCode !== 8 && keyCode !== 46) {
+      event.preventDefault();
+    }
+  }
+
+  bookT.addEventListener("input", updateButtonState);
+  bookA.addEventListener("input", updateButtonState);
+  bookP.addEventListener("keydown", numberOnly);
+
+  //Initial State
+  updateButtonState();
+}
+validationState();
 
 function clearFieldContent() {
   title.value = "";
@@ -170,9 +211,6 @@ function clearFieldContent() {
   pages.value = "";
   genre.value = "";
   read.checked = false;
+  btn.disabled = true;
 }
-// Function to print all books initially
-function printAllBooks() {
-  printBooks(myLibrary);
-}
-printAllBooks();
+

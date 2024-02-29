@@ -38,7 +38,9 @@
                   name="book-title"
                   id="book-title"
                   maxlength="45"
+                  
                 />
+                <span></span>
               </div>
               <div>
                 <li>
@@ -50,12 +52,13 @@
                   id="book-author"
                   maxlength="45"
                 />
+                <span></span>
               </div>
               <div>
                 <li>
                   <label for="book-pages">Number of Pages</label>
                 </li>
-                <input type="number" name="book-pages" id="book-pages" />
+                <input type="text" name="book-pages" id="book-pages" />
               </div>
               <div>
                 <li>
@@ -65,6 +68,7 @@
                   class="book-genre"
                   list="genre-options"
                   id="book-genre"
+                  type="text"
                 />
                 <datalist id="genre-options">
                   <option value="Romance">Romance</option>
@@ -112,7 +116,7 @@
               </div>
               <div>
                 <li>
-                  <div><button type="submit" id="btn">Submit</button></div>
+                  <div><button type="submit" id="btn" disabled>Submit</button></div>
                 </li>
               </div>
             </ul>
