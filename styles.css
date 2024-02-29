@@ -31,14 +31,14 @@ input[type="number"] {
   text-align: left;
   display: grid;
   grid-template-columns: 1fr 5fr;
-  grid-template-rows: 1fr 3fr 3fr 3fr;
+  grid-template-rows: 0.5fr 0.4fr 5fr 5fr;
   font-family: var(--main-font);
 }
 
 .header {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
-  font-size: 2em;
+  font-size: 1.7em;
   display: flex;
   gap: 0.25em;
   justify-content: center;
@@ -47,7 +47,25 @@ input[type="number"] {
   color: var(--main-font-color);
 }
 
+.search-bar {
+  grid-area: 2 / 2 / 3 / 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
+  font-size: 1em;
+  padding: 0.75em;
+}
+
+.search-bar input {
+  width: 30em
+}
+
+.search-bar div {
+  grid-column:  2 / 3;
+}
 .logo {
+  grid-area: 1 / 1 / 2 / 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,8 +75,8 @@ input[type="number"] {
 
 img {
   height: auto;
-  width: 8em;
-  margin: 0.2em;
+  width: 7em;
+  padding: 0.5em;
 }
 
 .sidebar {
@@ -81,10 +99,6 @@ form {
 
 form div {
   padding-bottom: 2em;
-}
-
-input {
-  font-size: 1.2em;
 }
 
 .container div:nth-child(4) {
@@ -127,16 +141,17 @@ input[type="password"] {
   transition: color 0.3s ease-out;
 }
 
-input:focus {
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
   box-shadow: 4px 4px 0px 0px var(--secondary-bg-color);
   transform: translateX(0.2em);
   transform: translateY(0.2em);
 }
 
 .shelf {
-  border: solid black 2px;
   grid-column: 2 / 3;
-  grid-row: 2 / 5;
+  grid-row: 3 / 5;
 }
 
 form > section {

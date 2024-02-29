@@ -18,10 +18,20 @@
   <body>
     <div class="container">
       <div class="header">
-        <i class="fas fa-search"></i>
-        <input type="text" name="search-item" id="search-item" placeholder="Search Book">
+        <h1>Library of Books</h1>
       </div>
 
+      <div class="search-bar">
+        <div>
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            name="search-item"
+            id="search-item"
+            placeholder="Search Book"
+          />
+        </div>
+      </div>
       <div class="logo">
         <img src="./images/Livro4.svg" alt="white book logo" />
       </div>
@@ -38,7 +48,6 @@
                   name="book-title"
                   id="book-title"
                   maxlength="45"
-                  
                 />
                 <span></span>
               </div>
@@ -116,7 +125,9 @@
               </div>
               <div>
                 <li>
-                  <div><button type="submit" id="btn" disabled>Submit</button></div>
+                  <div>
+                    <button type="submit" id="btn" disabled>Submit</button>
+                  </div>
                 </li>
               </div>
             </ul>
