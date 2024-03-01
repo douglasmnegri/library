@@ -2,6 +2,9 @@
 
 A simple web application to manage your personal library.
 
+## Live Demo
+[Link](https://douglasmnegri.github.io/library/)
+
 ## Features
 
 - **Add Books**: Easily add your favorite books to your library by providing title, author, number of pages, and genre.
@@ -22,9 +25,9 @@ A simple web application to manage your personal library.
 - **JavaScript**: Implemented interactive features and functionality.
 
 
-## Demo
+## GIF
 
-![Library Demo](/images/library.gif)
+<img src="/images/library.gif" alt="Library Demo" style="width: 125%;">
 
 
 ## License
