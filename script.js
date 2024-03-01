@@ -39,8 +39,31 @@ const myLibrary = [
     read: true,
     printId: false,
   },
+  {
+    title: "Pride and Prejudice",
+    author: "Jane Austen",
+    pages: 279,
+    genre: "Romance",
+    read: true,
+    printId: false,
+  },
+  {
+    title: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+    pages: 224,
+    genre: "Coming-of-age",
+    read: false,
+    printId: false,
+  },
+  {
+    title: "The Hobbit",
+    author: "J.R.R. Tolkien",
+    pages: 310,
+    genre: "Fantasy",
+    read: true,
+    printId: false,
+  },
 ];
-// { title: "Nineteen Eigthy-four", pages: 335, read: false }
 
 function Book(title, author, pages, genre, read, printId) {
   this.title = title;
@@ -117,15 +140,21 @@ function printBooks(books) {
         : ((read.textContent = "Not read"),
           (read.style.backgroundColor = "#e76b2d"));
 
-      read.addEventListener("click", () => {
-        if (read.textContent === "Read") {
-          read.textContent = "Not read";
-          read.style.backgroundColor = "#e76b2d";
-        } else {
-          read.textContent = "Read";
-          read.style.backgroundColor = "#333d30";
-        }
-      });
+      function readBtn(book) {
+        read.addEventListener("click", () => {
+          if (book.read === false) {
+            read.textContent = "Read";
+            read.style.backgroundColor = "#333d30";
+            book.read = true;
+          } else if (book.read === true) {
+            read.textContent = "Not read";
+            read.style.backgroundColor = "#e76b2d";
+            book.read = false;
+          }
+        });
+      }
+
+      readBtn(book);
 
       remove.addEventListener("click", () => {
         // Remove the book from the library array
@@ -157,12 +186,11 @@ function printAllBooks() {
 }
 printAllBooks();
 
-
 // Field control for validation and design
 const btn = document.getElementById("btn");
 const bookT = document.getElementById("book-title");
 const bookA = document.getElementById("book-author");
-const bookP = document.getElementById("book-pages")
+const bookP = document.getElementById("book-pages");
 
 function validationState() {
   function validateInputs() {
@@ -201,15 +229,13 @@ function clearFieldContent() {
   btn.disabled = true;
 }
 
-
 // Filters
 const searchInput = document.getElementById("search-item");
 const bookFilter = document.getElementById("book-filter");
 
-
 function applyFilters() {
   const searchTerm = searchInput.value.trim().toUpperCase();
-  const bookState = bookFilter.value
+  const bookState = bookFilter.value;
   let filteredBooks = myLibrary;
 
   if (searchTerm !== "") {
@@ -225,8 +251,7 @@ function applyFilters() {
     filteredBooks = filteredBooks.filter((element) => {
       return element.read === true;
     });
-  }
-  else if(bookState === "Not read") {
+  } else if (bookState === "Not read") {
     filteredBooks = filteredBooks.filter((element) => {
       return element.read === false;
     });
