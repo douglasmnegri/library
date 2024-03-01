@@ -58,12 +58,22 @@ input[type="number"] {
 }
 
 .search-bar input {
-  width: 30em
+  width: 25em
 }
 
-.search-bar div {
-  grid-column:  2 / 3;
+.search-bar  + div {
+  grid-column:  1 / 2;
+  display: block;
 }
+
+.search-bar div:nth-child(2) {
+  grid-column: 3 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+
 .logo {
   grid-area: 1 / 1 / 2 / 2;
   display: flex;

@@ -12,6 +12,8 @@
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
     />
+    <script src="https://kit.fontawesome.com/c5e5acf6f6.js" crossorigin="anonymous"></script>
+
 
     <title>Library Project</title>
   </head>
@@ -23,13 +25,22 @@
 
       <div class="search-bar">
         <div>
-          <i class="fas fa-search"></i>
+          <i class="fa-solid fa-magnifying-glass"></i>
           <input
             type="text"
             name="search-item"
             id="search-item"
             placeholder="Search Book"
           />
+        </div>
+        <div>
+          <i class="fa-solid fa-filter"></i>
+          <label for="book-filter">Filter books</label>
+          <select id="book-filter" name="filtes">
+            <option value="All books" default>All books</option>
+            <option value="Read">Read</option>
+            <option value="Not read">Not read</option>
+          </select>
         </div>
       </div>
       <div class="logo">

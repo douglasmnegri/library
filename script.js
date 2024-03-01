@@ -12,7 +12,7 @@ const myLibrary = [
     author: "J.K. Rowling",
     pages: 320,
     genre: "Fantasy",
-    read: true,
+    read: false,
     printId: false,
   },
   {
@@ -83,19 +83,6 @@ listOfBooks();
 function addBookToLibrary() {
   myLibrary.push(this);
 }
-
-const searchInput = document.getElementById("search-item");
-searchInput.addEventListener("input", () => {
-  const searchTerm = searchInput.value.trim().toUpperCase(); // Trim whitespace and convert to uppercase
-  const searchMatch = myLibrary.filter((element) => {
-    return (
-      element.title.toUpperCase().includes(searchTerm) ||
-      element.author.toUpperCase().includes(searchTerm)
-    );
-  });
-  clearBookContainer();
-  printBooks(searchMatch);
-});
 
 function clearBookContainer() {
   const bookContainer = document.querySelector(".list-of-books");
@@ -200,9 +187,9 @@ function validationState() {
   bookA.addEventListener("input", updateButtonState);
   bookP.addEventListener("keydown", numberOnly);
 
-  //Initial State
   updateButtonState();
 }
+
 validationState();
 
 function clearFieldContent() {
@@ -214,3 +201,41 @@ function clearFieldContent() {
   btn.disabled = true;
 }
 
+
+// Filters
+const searchInput = document.getElementById("search-item");
+const bookFilter = document.getElementById("book-filter");
+
+
+function applyFilters() {
+  const searchTerm = searchInput.value.trim().toUpperCase();
+  const bookState = bookFilter.value
+  let filteredBooks = myLibrary;
+
+  if (searchTerm !== "") {
+    filteredBooks = filteredBooks.filter((element) => {
+      return (
+        element.title.toUpperCase().includes(searchTerm) ||
+        element.author.toUpperCase().includes(searchTerm)
+      );
+    });
+  }
+
+  if (bookState === "Read") {
+    filteredBooks = filteredBooks.filter((element) => {
+      return element.read === true;
+    });
+  }
+  else if(bookState === "Not read") {
+    filteredBooks = filteredBooks.filter((element) => {
+      return element.read === false;
+    });
+  }
+
+  clearBookContainer();
+  printBooks(filteredBooks);
+}
+
+searchInput.addEventListener("input", applyFilters);
+bookFilter.addEventListener("change", applyFilters);
+applyFilters(); // Initial application of filters
