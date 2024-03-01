@@ -1,6 +1,6 @@
 # Library
 
-A simple web application to manage your personal library, built using HTML, CSS, and JavaScript.
+A simple web application to manage your personal library.
 
 ## Features
 

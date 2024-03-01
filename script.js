@@ -203,8 +203,8 @@ function validationState() {
     btn.disabled = !validateInputs();
   }
 
+  // Allow only numbers and backspace/delete keys
   function numberOnly(event) {
-    // Allow only numbers and backspace/delete keys
     const keyCode = event.keyCode;
     if ((keyCode < 48 || keyCode > 57) && keyCode !== 8 && keyCode !== 46) {
       event.preventDefault();
