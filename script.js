@@ -65,43 +65,76 @@ const myLibrary = [
   },
 ];
 
-function Book(title, author, pages, genre, read, printId) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.genre = genre;
-  this.read = read;
-  this.printId = printId;
+class Book {
+  constructor(title, author, pages, genre, read, printId) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.genre = genre;
+    this.read = read;
+    this.printId = printId;
+  }
+
+  static addBookToLibrary(book) {
+    myLibrary.push(book);
+  }
 }
 
-Book.prototype.addBookToLibrary = addBookToLibrary;
-Book.prototype.listOfBooks = listOfBooks;
+class currentList {
+  constructor(
+    titleElement,
+    authorElement,
+    pagesElement,
+    genreElement,
+    readElement
+  ) {
+    this.titleElement = titleElement;
+    this.authorElement = authorElement;
+    this.pagesElement = pagesElement;
+    this.genreElement = genreElement;
+    this.readElement = readElement;
 
-let title = document.getElementById("book-title");
-let author = document.getElementById("book-author");
-let pages = document.getElementById("book-pages");
-let genre = document.getElementById("book-genre");
-let read = document.getElementById("status-read");
+    this.listOfBooks();
+  }
 
-function listOfBooks() {
-  const button = document.getElementById("btn");
-  button.addEventListener("click", (e) => {
-    e.preventDefault();
+  listOfBooks() {
+    const button = document.getElementById("btn");
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    const bookToAdd = new Book(
-      title.value,
-      author.value,
-      pages.value,
-      genre.value,
-      read.checked
-    );
-    bookToAdd.addBookToLibrary();
-    clearFieldContent();
-    printBooks(myLibrary);
-  });
+      const bookToAdd = new Book(
+        this.titleElement.value,
+        this.authorElement.value,
+        this.pagesElement.value,
+        this.genreElement.value,
+        this.readElement.checked
+      );
+      Book.addBookToLibrary(bookToAdd);
+      clearFieldContent(
+        this.titleElement,
+        this.authorElement,
+        this.pagesElement,
+        this.genreElement,
+        this.readElement
+      );
+      printBooks(myLibrary);
+    });
+  }
 }
 
-listOfBooks();
+const titleElement = document.getElementById("book-title");
+const authorElement = document.getElementById("book-author");
+const pagesElement = document.getElementById("book-pages");
+const genreElement = document.getElementById("book-genre");
+const readElement = document.getElementById("status-read");
+
+const booksList = new currentList(
+  titleElement,
+  authorElement,
+  pagesElement,
+  genreElement,
+  readElement
+);
 
 function addBookToLibrary() {
   myLibrary.push(this);
@@ -220,12 +253,18 @@ function validationState() {
 
 validationState();
 
-function clearFieldContent() {
-  title.value = "";
-  author.value = "";
-  pages.value = "";
-  genre.value = "";
-  read.checked = false;
+function clearFieldContent(
+  titleElement,
+  authorElement,
+  pagesElement,
+  genreElement,
+  readElement
+) {
+  titleElement.value = "";
+  authorElement.value = "";
+  pagesElement.value = "";
+  genreElement.value = "";
+  readElement.checked = false;
   btn.disabled = true;
 }
 
